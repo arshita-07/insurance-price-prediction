@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<title>insurance cost prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+  <style>
+    table
+    {
+      border-collapse: separate;
+      border-spacing: 0 15px;
+    }
+    select
+    {
+      width: 100%;
+      border: 1px solid white;
+      border-radius: 0.5em;
+    }
+    input[type="text"], input[type="number"]
+    {
+      width: 100%;
+      border: 1px solid white;
+      border-radius: 0.5em;
+    }
+    input[type="submit"]
+    {
+      width: 30%;
+      background-color: black;
+      color: white;
+      border: 1px solid white;
+      border-radius: 0.5em;
+      margin-left: 35%;
+      height: 30px;
+    }
+  </style>
+</head>
+<body class="w3-content" style="max-width: 100%; overflow-y: hidden;">
+
+<!-- First Grid: Logo & About -->
+<div class="w3-row">
+  <div class="w3-half w3-black w3-container w3-center" style="height:617px">
+    <div class="w3-padding-64">
+      <h1>Insurance Cost Prediction</h1>
+    </div>
+    <div >
+      <p style="text-align: justify;">Provides an estimated quote for the health insurance premium to be paid by a person depending on various factors namely : age, gender, bmi, number of children, smoking habits and the region that they live in.</p>
+      <br><br><img src="{{url_for('static', filename='main.png')}}" alt="image">
+    </div>
+  </div>
+  <div class="w3-half w3-blue-grey w3-container" style="height:617px">
+    <div class="w3-padding-64 w3-center">
+      <h1>Personal Details</h1>
+      <div class="w3-left-align w3-padding-large">
+        <form method="POST">
+        {{ form.csrf_token() }}
+        <table style="width: 90%; margin-left: 5%;">
+          <thead>
+            <th style="width: 50%;"></th>
+            <th style="width: 50%;"></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{form.age.label}}</td>
+              <td>{{form.age}}</td>
+            </tr>
+            <tr>
+              <td>{{form.gender.label}}</td>
+              <td>{{form.gender}}</td>
+            </tr>
+            <tr>
+              <td>{{form.bmi.label}}</td>
+              <td>{{form.bmi}}</td>
+            </tr>
+            <tr>
+              <td>{{form.no_children.label}}</td>
+              <td>{{form.no_children}}</td>
+            </tr>
+            <tr>
+              <td>{{form.smoker.label}}</td>
+              <td>{{form.smoker}}</td>
+            </tr>
+            <tr>
+              <td>{{form.region.label}}</td>
+              <td>{{form.region}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
+        <div>The estimated insurance premium is: {{data}}</div>
+        <br><br>
+        {{form.submit}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
